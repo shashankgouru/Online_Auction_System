@@ -1,0 +1,20 @@
+.idea/
+*.iml
+
+# Backend build output
+backend/auction-platform/target/
+
+# Frontend dependencies and build output
+frontend/node_modules/
+frontend/dist/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+backend/auction-platform/.env
+frontend/.env
+
+# OS/editor files
+.DS_Store
+Thumbs.db
