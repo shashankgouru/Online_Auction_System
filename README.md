@@ -28,28 +28,29 @@ Full-stack auction platform with a Spring Boot backend and a React + Vite fronte
 
 ### 1. Configure the backend
 
-Use `backend/auction-platform/.env.example` as a reference for the values you need.
+Create a private local config file for backend secrets:
 
 ```powershell
 cd backend/auction-platform
-Get-Content .env.example
+Copy-Item .env.properties.example .env.properties
 ```
 
-Then set these environment variables in PowerShell before starting the backend.
-Spring Boot will read them from the shell environment:
+Open `backend/auction-platform/.env.properties` and fill in your own values:
 
-```powershell
-$env:SERVER_PORT="8081"
-$env:DB_URL="jdbc:mysql://localhost:3306/auction_db"
-$env:DB_USERNAME="your_mysql_username"
-$env:DB_PASSWORD="your_mysql_password"
-$env:JWT_SECRET="replace_with_a_long_random_secret"
-$env:ADMIN_SEED_EMAIL="admin@example.com"
-$env:ADMIN_SEED_PASSWORD="change_this_before_first_run"
-$env:ADMIN_SEED_USERNAME="admin"
-$env:ADMIN_SEED_FIRST_NAME="Admin"
-$env:ADMIN_SEED_LAST_NAME="User"
+```properties
+SERVER_PORT=8081
+DB_URL=jdbc:mysql://localhost:3306/auction_db
+DB_USERNAME=your_mysql_username
+DB_PASSWORD=your_mysql_password
+JWT_SECRET=replace_with_a_long_random_secret
+ADMIN_SEED_EMAIL=admin@example.com
+ADMIN_SEED_PASSWORD=change_this_before_first_run
+ADMIN_SEED_USERNAME=admin
+ADMIN_SEED_FIRST_NAME=Admin
+ADMIN_SEED_LAST_NAME=User
 ```
+
+This file is ignored by Git and loaded automatically by Spring Boot at startup.
 
 Create the MySQL database if it does not exist yet:
 
@@ -119,6 +120,6 @@ git push -u origin main
 ## Safety Checklist Before Making It Public
 
 - No real credentials in tracked files
-- No `.env` files committed
+- No `.env` or `.env.properties` files committed
 - No `node_modules`, `dist`, `target`, or IDE folders committed
 - README instructions work for a fresh local setup
